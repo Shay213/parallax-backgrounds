@@ -32,7 +32,7 @@ export default class Layer{
     if(this.x <= -this.width){
       this.x = 0
     }
-    this.x = this.x - this.speed
+    this.x = Math.floor(this.x - this.speed)
   }
 
   draw(ctx){
