@@ -15,7 +15,7 @@ backgroundLayer4.src = 'assets/backgroundLayers/layer-4.png'
 const backgroundLayer5 = new Image()
 backgroundLayer5.src = 'assets/backgroundLayers/layer-5.png'
 
-let gameSpeed = 5
+let gameSpeed = 15
 let x1 = 0
 let x2 = 2400
 
@@ -23,10 +23,11 @@ function animate(){
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
   ctx.drawImage(backgroundLayer4, x1, 0)
   ctx.drawImage(backgroundLayer4, x2, 0)
-  
-  if(x1 < -2400) x1 = 2400
+
+  if(x1 <= -2400) x1 = 2400 + x2 - gameSpeed
   else x1 -= gameSpeed
-  if(x2 < -2400) x2 = 2400
+
+  if(x2 <= -2400) x2 = 2400 + x1 - gameSpeed
   else x2 -= gameSpeed
 
   requestAnimationFrame(animate)
