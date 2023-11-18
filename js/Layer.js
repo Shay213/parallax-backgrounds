@@ -27,12 +27,10 @@ export default class Layer{
     ctx.drawImage(this.img, this.x2, this.y, this.width, this.height)
   }*/
 
-  update(gameSpeed){
+  update(gameSpeed, gameFrame){
     this.speed = gameSpeed * this.speedModifier
-    if(this.x <= -this.width){
-      this.x = 0
-    }
-    this.x = Math.floor(this.x - this.speed)
+    
+    this.x = -gameFrame * this.speed % this.width
   }
 
   draw(ctx){
