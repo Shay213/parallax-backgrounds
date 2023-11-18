@@ -10,27 +10,14 @@ export default class Layer{
     this.img.src = imgSrc
     this.speedModifier = speedModifier
     this.speed = initialGameSpeed * this.speedModifier
+    this.distanceMoved = 0
   }
 
-  /*update(gameSpeed){
-    this.speed = gameSpeed * this.speedModifier
-
-    if(this.x <= -this.width) this.x = this.width + this.x2 - this.speed
-    else this.x -= this.speed
-
-    if(this.x2 <= -this.width) this.x2 = this.width + this.x - this.speed
-    else this.x2 -= this.speed
-  }
-
-  draw(ctx){
-    ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
-    ctx.drawImage(this.img, this.x2, this.y, this.width, this.height)
-  }*/
-
-  update(gameSpeed, gameFrame){
+  update(gameSpeed){
     this.speed = gameSpeed * this.speedModifier
     
-    this.x = -gameFrame * this.speed % this.width
+    this.distanceMoved += this.speed
+    this.x = -this.distanceMoved % this.width
   }
 
   draw(ctx){

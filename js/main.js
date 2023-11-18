@@ -4,7 +4,6 @@ const canvas = document.getElementById('canvas')
 const ctx = canvas.getContext('2d')
 
 let gameSpeed = 5
-let gameFrame = 0
 
 const speedSlider = document.getElementById('slider')
 const showGameSpeed = document.getElementById('showGameSpeed')
@@ -32,11 +31,10 @@ function animate(){
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
 
   layers.forEach(layer => {
-    layer.update(gameSpeed, gameFrame)
+    layer.update(gameSpeed)
     layer.draw(ctx)
   })
 
-  gameFrame++
   requestAnimationFrame(animate)
 }
 
